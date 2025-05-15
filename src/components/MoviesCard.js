@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles.css";
 
-export default function MoviesCard({ movie }) {
+export default function MoviesCard({ movie, iswatchListed, toggleWatchList }) {
   const handleError = (e) => {
     e.target.src = "images/default.jpg"; // Set a default image if the original fails to load
   };
@@ -23,11 +23,21 @@ export default function MoviesCard({ movie }) {
       />
       <div className="movie-card-info">
         <h3 className="movie-card-title">{movie.title}</h3>
-        <p className="movie-card-genre">{movie.genre}</p>
-        <p className={`movie-card-rating ${getRatingClass(movie.rating)}`}>
-          {movie.rating}
-        </p>
+        <div>
+          <span className="movie-card-genre">{movie.genre}</span>
+          <span className={`movie-card-rating ${getRatingClass(movie.rating)}`}>
+            {movie.rating}
+          </span>
+        </div>
         <p>{movie.description}</p>
+        <label className="switch">
+          <input type="=checkbox"></input>
+          <span className="slider">
+            <span className="slider-label">
+              {iswatchListed ? "In WatchList" : "Add to WatchList"}
+            </span>
+          </span>
+        </label>
       </div>
     </div>
   );

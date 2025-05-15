@@ -74,7 +74,13 @@ function App() {
             ></Route>
             <Route
               path="/weather"
-              element={<WeatherGrid></WeatherGrid>}
+              element={
+                <WeatherGrid
+                  watchlist={watchlist}
+                  movies={movies}
+                  toggleWatchList={toggleWatchList}
+                ></WeatherGrid>
+              }
             ></Route>
           </Routes>
         </Router>
